@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './ProductDetails.css'
 import header_logo from "../assets/Image/logo.svg";
 import { CiClock2 } from "react-icons/ci";
 import { RiGlobalLine } from "react-icons/ri";
@@ -31,7 +32,24 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 import CreateCustomerModal from "../components/PoupModal/CreateCustomerModal";
 import PaymentSuccessModal from "../components/PoupModal/PaymentSuccessModal";
-
+import cash_logo from "../assets/Image/cash-icon.svg"
+import card_logo from "../assets/Image/card.svg"
+import points_logo from "../assets/Image/points.svg"
+import deposit_logo from "../assets/Image/deposit.svg"
+import cheque_logo from "../assets/Image/cheque.svg"
+import gift_logo from "../assets/Image/giftcard.svg"
+import scan_logo from "../assets/Image/scan-icon.svg"
+import paylater_logo from "../assets/Image/paylater.svg"
+import external_logo from "../assets/Image/external.svg"
+import splitbill_logo from "../assets/Image/split-bill.svg"
+import BarcodeModal from "../components/PoupModal/BarcodeModal";
+import ShippingModal from "../components/PoupModal/ShippingModal";
+import TaxModal from "../components/PoupModal/TaxModal";
+import CouponModal from "../components/PoupModal/CouponModal";
+import DiscountModal from "../components/PoupModal/Discount";
+import CashModal from "../components/PoupModal/CashModal";
+import Scan from "../components/PoupModal/Scan";
+import SplitBillModal from "../components/PoupModal/SplitBillModal";
 
 const SidebarNav = styled.div`
   background-color: white;
@@ -52,13 +70,39 @@ const SidebarNav = styled.div`
   }
 `;
 
+
 const ProductDetails = () => {
   const [isOnRoundoff, setIsOnRoundoff] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
-   const [showSuccess, setShowSuccess] = useState(false);
-    const handlePaymentClick = () => {
+  const [showBarcodeModal, setShowBarcodeModal] = useState(false);
+  const openBarcodeModal = () => setShowBarcodeModal(true);
+  const closeBarcodeModal = () => setShowBarcodeModal(false);
+   const [showShippingModal, setShowShippingModal] = useState(false);
+  const openShippingModal = () => setShowShippingModal(true);
+  const closeShippingModal = () => setShowShippingModal(false);
+   const [showTaxModal, setShowTaxModal] = useState(false);
+  const openTaxModal = () => setShowTaxModal(true);
+  const closeTaxModal = () => setShowTaxModal(false);
+   const [showCouponModal, setShowCouponModal] = useState(false);
+  const openCouponModal = () => setShowCouponModal(true);
+  const closeCouponModal = () => setShowCouponModal(false);
+   const [showDiscountModal, setShowDiscountModal] = useState(false);
+  const openDiscountModal = () => setShowDiscountModal(true);
+  const closeDiscountModal = () => setShowDiscountModal(false);
+   const [showCashModal, setShowCashModal] = useState(false);
+  const openCashModal = () => setShowCashModal(true);
+  const closeCashModal = () => setShowCashModal(false);
+   const [showScanModal, setShowScanModal] = useState(false);
+  const openScanModal = () => setShowScanModal(true);
+  const closeScanModal = () => setShowScanModal(false);
+   const [showSplitbillModal, setShowSplitbillModal] = useState(false);
+  const openSplitbillModal = () => setShowSplitbillModal(true);
+  const closeSplitbillModal = () => setShowSplitbillModal(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+   const closeSucessModal = () => setShowSuccess(false);
+  const handlePaymentClick = () => {
     // simulate payment process here
     setShowSuccess(true);
   };
@@ -72,7 +116,7 @@ const ProductDetails = () => {
     setShowSuccess(false);
   };
   return (
-    <div>
+    <div className="position-relative">
       {/* header-start??? */}
       <header style={{ borderBottom: "1px solid #e3dcdc" }}>
         <nav className="d-flex justify-content-between align-items-center px-3 py-3">
@@ -275,7 +319,10 @@ const ProductDetails = () => {
               className="sidebar py-4"
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
-              <Link to="product_card" style={{textDecoration:"none", color:"black"}}>
+              <Link
+                to="product_card"
+                style={{ textDecoration: "none", color: "black" }}
+              >
                 <SidebarNav>
                   <img
                     style={{
@@ -340,7 +387,7 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="py-3" style={{ width: "900px" }}>
+          <div className="py-3" >
             <div className="header-product d-flex justify-content-between align-items-center">
               <div>
                 <strong>Welcome, Wesley Adrian</strong>
@@ -399,14 +446,39 @@ const ProductDetails = () => {
         <div
           className="customer-info-container"
           style={{
-            width: "470px",
+            width: "550px",
             backgroundColor: "white",
             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
-            padding: "3px 15px",
+            padding: "10px 15px",
             // overflowY:"scroll",
             // height:"600px"
           }}
         >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              borderBottom: "1px solid  #e3dcdc",
+              margin: "10px 0",
+            }}
+          >
+            <h1 className="fs-4">Order List</h1>{" "}
+            <span>
+              {" "}
+              <span
+                style={{
+                  backgroundColor: "#1B2850",
+                  color: "white",
+                  borderRadius: "5px",
+                  fontSize: "12px",
+                  padding: "3px",
+                }}
+              >
+                #ORD123
+              </span>
+              <MdDeleteForever style={{ color: "red", fontSize: "18px" }} />
+            </span>
+          </div>
           <strong>Customer Information</strong>
           <div className="py-3 d-flex align-items-center justify-content-between">
             <select
@@ -424,18 +496,19 @@ const ProductDetails = () => {
             </select>
             <div className="d-flex gap-2">
               <span
-               onClick={openModal}
+                onClick={openModal}
                 style={{
                   backgroundColor: "#009587",
                   padding: "8px 10px",
                   borderRadius: "5px",
                   color: "white",
-                   cursor: "pointer"
+                  cursor: "pointer",
                 }}
               >
                 <TbUserPlus />
               </span>
               <span
+               onClick={openBarcodeModal}
                 style={{
                   backgroundColor: "rgb(0, 122, 255)",
                   padding: "8px 10px",
@@ -667,13 +740,17 @@ const ProductDetails = () => {
 
           <div className="payment-summary-container py-3 d-flex flex-column  gap-3">
             <span style={{ fontWeight: "500" }}>Payment Summary</span>
-              <select name="" id="" style={{padding:"8px", border:"1px solid rgb(227, 220, 220)"}}>
-                <option value="">Shipping</option>
-                <option value="">Tax</option>
-                <option value="">Coupon</option>
-                <option value="">Discount</option>
-              </select>
-              <div className="d-flex justify-content-between align-items-center ">
+            {/* <select
+              name=""
+              id=""
+              style={{ padding: "8px", border: "1px solid rgb(227, 220, 220)" }}
+            >
+              <option value="">Shipping</option>
+              <option value="">Tax</option>
+              <option value="">Coupon</option>
+              <option value="">Discount</option>
+            </select> */}
+            {/* <div className="d-flex justify-content-between align-items-center ">
               <span
                 style={{
                   display: "flex",
@@ -712,8 +789,8 @@ const ProductDetails = () => {
                 Roundoff
               </span>
               <span>$0.11</span>
-            </div>
-            <div className="d-flex justify-content-between align-items-center ">
+            </div> */}
+            {/* <div className="d-flex justify-content-between align-items-center ">
               <span
                 style={{
                   color: "grey",
@@ -725,9 +802,10 @@ const ProductDetails = () => {
                 Sub Total <FaRegEdit style={{ color: "grey" }} />
               </span>
               <span>$60.454</span>
-            </div>
-            {/* <div className="d-flex justify-content-between align-items-center ">
+            </div> */}
+            <div className="d-flex justify-content-between align-items-center ">
               <span
+                 onClick={openShippingModal}
                 style={{
                   color: "grey",
                   display: "flex",
@@ -741,6 +819,7 @@ const ProductDetails = () => {
             </div>
             <div className="d-flex justify-content-between align-items-center ">
               <span
+               onClick={openTaxModal}
                 style={{
                   color: "grey",
                   display: "flex",
@@ -754,6 +833,7 @@ const ProductDetails = () => {
             </div>
             <div className="d-flex justify-content-between align-items-center ">
               <span
+              onClick={openCouponModal}
                 style={{
                   color: "grey",
                   display: "flex",
@@ -767,6 +847,7 @@ const ProductDetails = () => {
             </div>
             <div className="d-flex justify-content-between align-items-center ">
               <span
+                onClick={openDiscountModal}
                 style={{
                   color: "red",
                   display: "flex",
@@ -827,31 +908,159 @@ const ProductDetails = () => {
                   gap: "10px",
                 }}
               >
-                Sub Total <FaRegEdit style={{ color: "grey" }} />
+                Sub Total 
               </span>
               <span>$60.454</span>
-            </div> */}
+            </div>
+            <div className="d-flex justify-content-between align-items-center " style={{borderTop:"1px solid  #e3dcdc", margin:"15px 0", padding:"10px 0"}}>
+              <span style={{ fontWeight: "500" }}>Total Payable</span>
+              <span style={{ fontWeight: "500" }}>$56590</span>
+            </div>
           </div>
+           <div className="select-payment-container">
+                <span style={{ fontWeight: "500" }}>Select Payment</span>
+
+                <div className="payment-btn py-3 d-flex justify-content-between flex-wrap gap-2">
+                  <button className="payment-btton" onClick={openCashModal}>
+                   <img src={cash_logo} alt="" />  Cash
+                  </button>
+                   <button className="payment-btton">
+                   <img src={card_logo} alt="" />  Card
+                  </button>
+                   <button className="payment-btton">
+                   <img src={points_logo} alt="" />  Points
+                  </button>
+                   <button className="payment-btton">
+                   <img src={deposit_logo} alt="" />  Deposit
+                  </button>
+                    <button className="payment-btton">
+                   <img src={cheque_logo} alt="" />  Cheque
+                  </button>
+                    <button className="payment-btton">
+                   <img src={gift_logo} alt="" />  Gift Card
+                  </button>
+                    <button className="payment-btton" onClick={openScanModal}>
+                   <img src={scan_logo} alt="" />  Scan
+                  </button>
+                    <button className="payment-btton">
+                   <img src={paylater_logo} alt="" />  Pay Later
+                  </button>
+                    <button className="payment-btton">
+                   <img src={external_logo} alt="" />  External
+                  </button>
+                    <button className="payment-btton" onClick={openSplitbillModal}>
+                   <img src={splitbill_logo} alt="" />  Split Bill
+                  </button>
+                </div>
+
+                <div className="d-flex justify-content-between gap-2">
+                  <button className="w-100" style={{border:"none", backgroundColor:"rgb(129, 189, 255)",color:"white", padding:"8px", borderRadius:"5px"}}>Print Order</button>
+                  <button className="w-100" style={{border:"none",backgroundColor:"rgb(0, 122, 255)",color:"white", padding:"8px", borderRadius:"5px"}}>Place Order</button>
+                </div>
+           </div>
         </div>
       </div>
       {/* main-content-end */}
-      
+
       {/* footer-content-start? */}
-      <div className="footer-content" style={{boxShadow:"rgba(0, 0, 0, 0.16) 0px 1px 4px" ,padding:"10px" , display:"flex", justifyContent:"center",}}>
-            <div className="d-flex gap-2">
-                <button style={{border:"none", backgroundColor:"#f74200",color:"white", borderRadius:"5px", padding:"10px"}}>Hold</button>
-                <button style={{border:"none", backgroundColor:"#0060ee",color:"white", borderRadius:"5px", padding:"10px"}}>Void</button>
-                <button  onClick={handlePaymentClick} style={{border:"none", backgroundColor:"#00b1d6",color:"white", borderRadius:"5px", padding:"10px"}}>Payment</button>
-                <button style={{border:"none", backgroundColor:"#002d4c",color:"white", borderRadius:"5px", padding:"10px"}}>View Orders</button>
-                <button style={{border:"none", backgroundColor:"#2b39cc",color:"white", borderRadius:"5px", padding:"10px"}}>Reset</button>
-                <button style={{border:"none", backgroundColor:"#ff0000",color:"white", borderRadius:"5px", padding:"10px"}}>Transaction</button>
-            </div>   
+      <div
+        className="footer-content"
+        style={{
+          boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+          padding: "10px",
+          display: "flex",
+          justifyContent: "center",
+          position:"fixed",
+          zIndex:"1",
+          width:"100%",
+          bottom:"0",
+          backgroundColor:"white"
+        }}
+      >
+        <div className="d-flex gap-2">
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "#f74200",
+              color: "white",
+              borderRadius: "5px",
+              padding: "10px",
+            }}
+          >
+            Hold
+          </button>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "#0060ee",
+              color: "white",
+              borderRadius: "5px",
+              padding: "10px",
+            }}
+          >
+            Void
+          </button>
+          <button
+            onClick={handlePaymentClick}
+            style={{
+              border: "none",
+              backgroundColor: "#00b1d6",
+              color: "white",
+              borderRadius: "5px",
+              padding: "10px",
+            }}
+          >
+            Payment
+          </button>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "#002d4c",
+              color: "white",
+              borderRadius: "5px",
+              padding: "10px",
+            }}
+          >
+            View Orders
+          </button>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "#2b39cc",
+              color: "white",
+              borderRadius: "5px",
+              padding: "10px",
+            }}
+          >
+            Reset
+          </button>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "#ff0000",
+              color: "white",
+              borderRadius: "5px",
+              padding: "10px",
+            }}
+          >
+            Transaction
+          </button>
+        </div>
       </div>
-        {/* footer-content-end? */}
-         {showModal && <CreateCustomerModal onClose={closeModal}/>}
-          {showSuccess && 
-        <PaymentSuccessModal  onPrint={handlePrint}
-          onNext={handleNext}/>}
+      {/* footer-content-end? */}
+      {showModal && <CreateCustomerModal onClose={closeModal} />}
+       {showBarcodeModal &&<BarcodeModal  onClose={closeBarcodeModal} />}
+      {showSuccess && (
+        <PaymentSuccessModal onPrint={handlePrint} onNext={handleNext} onClose={closeSucessModal}/>
+      )}
+      {showShippingModal && <ShippingModal onClose={closeShippingModal}/>}
+      {showTaxModal && <TaxModal onClose={closeTaxModal}/>}
+      {showCouponModal &&<CouponModal onClose={closeCouponModal}/>}
+      {showDiscountModal && <DiscountModal onClose={closeDiscountModal}/>}
+      {showCashModal &&<CashModal onClose={closeCashModal}/>}
+      {showScanModal && <Scan onClose={closeScanModal}/>}
+      {showSplitbillModal &&<SplitBillModal  onClose={closeSplitbillModal}/>}
+     
     </div>
   );
 };

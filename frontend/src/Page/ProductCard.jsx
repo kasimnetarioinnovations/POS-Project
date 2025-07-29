@@ -69,6 +69,20 @@ const ProductCard = () => {
     price: 19900,
     image: product7
   },
+   {
+    id: 7,
+    name: "Google Pixel 6a",
+    category: "Mobiles",
+    price: 19900,
+    image: product7
+  },
+   {
+    id: 6,
+    name: "Realme Narzo 50",
+    category: "Mobiles",
+    price: 9999,
+    image: product6
+  },
 //   {
 //     id: 8,
 //     name: "iPhone 13 Mini",
@@ -76,12 +90,19 @@ const ProductCard = () => {
 //     price: 17800,
 //     image: product8
 //   }
+{
+    id: 7,
+    name: "Google Pixel 6a",
+    category: "Mobiles",
+    price: 19900,
+    image: product7
+  },
 ];
 
 
   return (
     <div>
-        <div className="productcard-container py-3" style={{ display:"grid", gridTemplateColumns:"repeat(4, 0fr)", gap:"10px"}}>
+        <div className="productcard-container py-3" style={{ display:"grid", gridTemplateColumns:"repeat(5, 0fr)", gap:"10px" , flexWrap:"wrap"}}>
          {fakeProducts.map((item) =>(
             <Card key={item.id} product={item}/>
          ))}

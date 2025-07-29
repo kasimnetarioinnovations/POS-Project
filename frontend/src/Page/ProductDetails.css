@@ -1,0 +1,31 @@
+.payment-btton{
+    background-color: white;
+    border: 1px solid #e3dcdc;
+    text-align: center;
+    padding: 5px;
+     width: 165px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.payment-btton:hover{
+    border: 1px solid rgb(0, 122, 255);
+    background-color: rgb(129, 189, 255);
+;
+}
+.sidebar-content {
+    overflow-y: auto;
+    width: calc(100% - 550px);
+    height: calc(100vh - 160px);
+
+}
+.sidebar-content::-webkit-scrollbar{
+    display: none;
+}
+.customer-info-container{
+    overflow-y: auto;
+    height: calc(100vh - 160px);
+    
+}
+.customer-info-container::-webkit-scrollbar{
+    display: none;
+}

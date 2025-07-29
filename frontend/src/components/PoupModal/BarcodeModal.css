@@ -1,0 +1,120 @@
+.barcode-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.barcode-container {
+  background-color: white;
+  width: 100%;
+  max-width: 28rem; /* approx 448px */
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.barcode-close-btn {
+  color: white;
+  background-color: red; /* red-500 */
+  border-radius: 9999px;
+  padding: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.barcode-input {
+  width: 100%;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.barcode-item-box {
+  background-color: #f3f4f6; /* gray-100 */
+  padding: 1rem;
+  border-radius: 0.375rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.item-info p {
+  margin: 0;
+  color: #374151; /* gray-700 */
+}
+
+.item-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.item-price {
+  font-weight: 600;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-btn {
+  background-color: #d1d5db;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.btn-cancel {
+  background-color: #001f3f;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+}
+
+.btn-add {
+  background-color: #f59e0b;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+}
+
+.scan-icon-button {
+  background-color: rgb(0, 122, 255);
+  padding: 8px 10px;
+  border-radius: 5px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
