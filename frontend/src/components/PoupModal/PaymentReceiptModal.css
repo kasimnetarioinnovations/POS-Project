@@ -1,0 +1,32 @@
+.receipt-container {
+  background: #fff;
+  padding: 30px;
+  width: 400px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+.receipt-container::-webkit-scrollbar{
+  display: none;
+}
+
+.invoice-logo {
+  height: 50px;
+}
+
+.invoice-table th,
+.invoice-table td {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.invoice-summary p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.barcode-img {
+  height: 50px;
+}
