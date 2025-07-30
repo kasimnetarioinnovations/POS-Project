@@ -3,7 +3,7 @@ import './PaymentSuccessModal.css';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import PaymentReceiptModal from '../../components/PoupModal/PaymentReceiptModal'
 
-const PaymentSuccessModal = ({onPrint, onNext, onClose }) => {
+const PaymentSuccessModal = ({onPrint, onNext }) => {
   const [showReceipt, setShowReceipt] = useState(false);
   
 
@@ -15,7 +15,6 @@ const PaymentSuccessModal = ({onPrint, onNext, onClose }) => {
     <div className="payment-modal-backdrop">
       <div className="payment-modal-box text-center">
         <BsCheckCircleFill className="payment-success-icon" />
-        <button onClick={onClose}>X</button>
         <h4 className="fw-bold mt-3">Payment Completed</h4>
         <p className="text-muted mb-4">Do you want to Print Receipt for the Completed Order</p>
 

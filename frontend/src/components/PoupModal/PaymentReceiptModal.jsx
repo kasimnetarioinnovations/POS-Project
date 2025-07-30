@@ -7,7 +7,7 @@ const PaymentReceiptModal = () => {
   };
 
   return (
-    <div className="receipt-container" style={{height:"100vh" ,overflowY:"scroll"}}>
+    <div id="print-receipt" className="receipt-container" style={{height:"100vh" ,overflowY:"scroll"}}>
       <div className="text-center">
         <img
           src="https://dreamguys.co.in/pos/template/img/logo.png"

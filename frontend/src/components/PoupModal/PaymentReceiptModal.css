@@ -30,3 +30,25 @@
 .barcode-img {
   height: 50px;
 }
+/* PaymentReceiptModal.css */
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #print-receipt, #print-receipt * {
+    visibility: visible;
+  }
+
+  #print-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  button {
+    display: none; /* Hide print button itself */
+  }
+}

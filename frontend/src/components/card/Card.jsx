@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Card.css'
 
 
 const Card = ({product }) => {
@@ -21,6 +22,7 @@ const Card = ({product }) => {
         }}
       >
         <img
+         className="card-product"
           style={{
             backgroundColor: "#f5f4f4",
             width: "100%",

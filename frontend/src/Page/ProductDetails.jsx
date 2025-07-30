@@ -50,6 +50,10 @@ import DiscountModal from "../components/PoupModal/Discount";
 import CashModal from "../components/PoupModal/CashModal";
 import Scan from "../components/PoupModal/Scan";
 import SplitBillModal from "../components/PoupModal/SplitBillModal";
+import PrintOrder from "../components/PoupModal/PrintOrder";
+import ResetModal from "../components/PoupModal/ResetModal";
+import TransactionModel from "../components/PoupModal/TransactionModel";
+import ViewOrders from "../components/PoupModal/ViewOrders";
 
 const SidebarNav = styled.div`
   background-color: white;
@@ -100,8 +104,19 @@ const ProductDetails = () => {
    const [showSplitbillModal, setShowSplitbillModal] = useState(false);
   const openSplitbillModal = () => setShowSplitbillModal(true);
   const closeSplitbillModal = () => setShowSplitbillModal(false);
+   const [showPrintOrderModal, setShowPrintOrderModal] = useState(false);
+  const openPrintOrderModal = () => setShowPrintOrderModal(true);
+  const closePrintOrderModal = () => setShowPrintOrderModal(false);
+   const [showResetModal, setShowResetModal] = useState(false);
+  const openResetModal = () => setShowResetModal(true);
+  const closeResetModal = () => setShowResetModal(false);
+  const [showTransactionModal, setShowTransactionModal] = useState(false);
+  const openTransactionModal = () => setShowTransactionModal(true);
+  const closeTransactionModal = () => setShowTransactionModal(false);
+   const [showViewOrdersModal, setShowViewOrdersModal] = useState(false);
+  const openViewOrdersModal = () => setShowViewOrdersModal(true);
+  const closeViewOrdersModal = () => setShowViewOrdersModal(false);
   const [showSuccess, setShowSuccess] = useState(false);
-   const closeSucessModal = () => setShowSuccess(false);
   const handlePaymentClick = () => {
     // simulate payment process here
     setShowSuccess(true);
@@ -954,7 +969,7 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="d-flex justify-content-between gap-2">
-                  <button className="w-100" style={{border:"none", backgroundColor:"rgb(129, 189, 255)",color:"white", padding:"8px", borderRadius:"5px"}}>Print Order</button>
+                  <button className="w-100" style={{border:"none", backgroundColor:"rgb(129, 189, 255)",color:"white", padding:"8px", borderRadius:"5px"}} onClick={openPrintOrderModal}>Print Order</button>
                   <button className="w-100" style={{border:"none",backgroundColor:"rgb(0, 122, 255)",color:"white", padding:"8px", borderRadius:"5px"}}>Place Order</button>
                 </div>
            </div>
@@ -979,6 +994,7 @@ const ProductDetails = () => {
       >
         <div className="d-flex gap-2">
           <button
+             onClick={openPrintOrderModal}
             style={{
               border: "none",
               backgroundColor: "#f74200",
@@ -1013,6 +1029,7 @@ const ProductDetails = () => {
             Payment
           </button>
           <button
+            onClick={openViewOrdersModal}
             style={{
               border: "none",
               backgroundColor: "#002d4c",
@@ -1024,6 +1041,7 @@ const ProductDetails = () => {
             View Orders
           </button>
           <button
+          onClick={openResetModal}
             style={{
               border: "none",
               backgroundColor: "#2b39cc",
@@ -1035,6 +1053,7 @@ const ProductDetails = () => {
             Reset
           </button>
           <button
+           onClick={openTransactionModal}
             style={{
               border: "none",
               backgroundColor: "#ff0000",
@@ -1051,7 +1070,7 @@ const ProductDetails = () => {
       {showModal && <CreateCustomerModal onClose={closeModal} />}
        {showBarcodeModal &&<BarcodeModal  onClose={closeBarcodeModal} />}
       {showSuccess && (
-        <PaymentSuccessModal onPrint={handlePrint} onNext={handleNext} onClose={closeSucessModal}/>
+        <PaymentSuccessModal onPrint={handlePrint} onNext={handleNext}/>
       )}
       {showShippingModal && <ShippingModal onClose={closeShippingModal}/>}
       {showTaxModal && <TaxModal onClose={closeTaxModal}/>}
@@ -1060,6 +1079,10 @@ const ProductDetails = () => {
       {showCashModal &&<CashModal onClose={closeCashModal}/>}
       {showScanModal && <Scan onClose={closeScanModal}/>}
       {showSplitbillModal &&<SplitBillModal  onClose={closeSplitbillModal}/>}
+      {showPrintOrderModal &&<PrintOrder  onClose={closePrintOrderModal}/> }
+      {showResetModal &&<ResetModal onClose={closeResetModal}/>}
+      {showTransactionModal &&<TransactionModel onClose={closeTransactionModal}/>}
+      {showViewOrdersModal &&<ViewOrders onClose={closeViewOrdersModal}/>}
      
     </div>
   );

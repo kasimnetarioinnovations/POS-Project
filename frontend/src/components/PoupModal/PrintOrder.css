@@ -1,0 +1,17 @@
+.printorder-overlay{
+   position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+.printorder-container{
+      background-color: white;
+  border-radius: 5px;
+  width: 500px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
