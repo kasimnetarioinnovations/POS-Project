@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import './ProductDetails.css'
-import header_logo from "../assets/Image/logo.svg";
+import "./ProductDetails.css";
+import header_logo from "../assets/Image/munc.png";
 import { CiClock2 } from "react-icons/ci";
 import { RiGlobalLine } from "react-icons/ri";
 import freshmart_logo from "../assets/Image/avator1.webp";
@@ -32,16 +32,16 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 import CreateCustomerModal from "../components/PoupModal/CreateCustomerModal";
 import PaymentSuccessModal from "../components/PoupModal/PaymentSuccessModal";
-import cash_logo from "../assets/Image/cash-icon.svg"
-import card_logo from "../assets/Image/card.svg"
-import points_logo from "../assets/Image/points.svg"
-import deposit_logo from "../assets/Image/deposit.svg"
-import cheque_logo from "../assets/Image/cheque.svg"
-import gift_logo from "../assets/Image/giftcard.svg"
-import scan_logo from "../assets/Image/scan-icon.svg"
-import paylater_logo from "../assets/Image/paylater.svg"
-import external_logo from "../assets/Image/external.svg"
-import splitbill_logo from "../assets/Image/split-bill.svg"
+import cash_logo from "../assets/Image/cash-icon.svg";
+import card_logo from "../assets/Image/card.svg";
+import points_logo from "../assets/Image/points.svg";
+import deposit_logo from "../assets/Image/deposit.svg";
+import cheque_logo from "../assets/Image/cheque.svg";
+import gift_logo from "../assets/Image/giftcard.svg";
+import scan_logo from "../assets/Image/scan-icon.svg";
+import paylater_logo from "../assets/Image/paylater.svg";
+import external_logo from "../assets/Image/external.svg";
+import splitbill_logo from "../assets/Image/split-bill.svg";
 import BarcodeModal from "../components/PoupModal/BarcodeModal";
 import ShippingModal from "../components/PoupModal/ShippingModal";
 import TaxModal from "../components/PoupModal/TaxModal";
@@ -54,6 +54,7 @@ import PrintOrder from "../components/PoupModal/PrintOrder";
 import ResetModal from "../components/PoupModal/ResetModal";
 import TransactionModel from "../components/PoupModal/TransactionModel";
 import ViewOrders from "../components/PoupModal/ViewOrders";
+import { SearchProvider, useSearch } from "../SearchContext";
 
 const SidebarNav = styled.div`
   background-color: white;
@@ -74,8 +75,47 @@ const SidebarNav = styled.div`
   }
 `;
 
+const SearchBar = () => {
+  const { searchTerm, setSearchTerm } = useSearch(); // <-- This must be inside SearchProvider
+
+  return (
+      <span
+                  style={{
+                    backgroundColor: "white",
+                    border: "1px solid #e3dcdc",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <CiSearch />
+                  <input
+                    style={{ border: "none", outline: "none" }}
+                    type="search"
+                    placeholder="Search Product"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </span> 
+  );
+};
 
 const ProductDetails = () => {
+  const [count, setCount] = useState(4); // default value
+  const [count2, setCount2] = useState(4); // default value
+  const [count3, setCount3] = useState(4); // default value
+  const [count4, setCount4] = useState(4); // default value
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => setCount((prev) => (prev > 0 ? prev - 1 : 0)); // prevent negative
+  const increment2 = () => setCount2((prev) => prev + 1);
+  const decrement2 = () => setCount2((prev) => (prev > 0 ? prev - 1 : 0)); // prevent negative
+  const increment3 = () => setCount3((prev) => prev + 1);
+  const decrement3 = () => setCount3((prev) => (prev > 0 ? prev - 1 : 0)); // prevent negative
+  const increment4 = () => setCount4((prev) => prev + 1);
+  const decrement4 = () => setCount4((prev) => (prev > 0 ? prev - 1 : 0)); // prevent negative
+
   const [isOnRoundoff, setIsOnRoundoff] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const openModal = () => setShowModal(true);
@@ -83,37 +123,37 @@ const ProductDetails = () => {
   const [showBarcodeModal, setShowBarcodeModal] = useState(false);
   const openBarcodeModal = () => setShowBarcodeModal(true);
   const closeBarcodeModal = () => setShowBarcodeModal(false);
-   const [showShippingModal, setShowShippingModal] = useState(false);
+  const [showShippingModal, setShowShippingModal] = useState(false);
   const openShippingModal = () => setShowShippingModal(true);
   const closeShippingModal = () => setShowShippingModal(false);
-   const [showTaxModal, setShowTaxModal] = useState(false);
+  const [showTaxModal, setShowTaxModal] = useState(false);
   const openTaxModal = () => setShowTaxModal(true);
   const closeTaxModal = () => setShowTaxModal(false);
-   const [showCouponModal, setShowCouponModal] = useState(false);
+  const [showCouponModal, setShowCouponModal] = useState(false);
   const openCouponModal = () => setShowCouponModal(true);
   const closeCouponModal = () => setShowCouponModal(false);
-   const [showDiscountModal, setShowDiscountModal] = useState(false);
+  const [showDiscountModal, setShowDiscountModal] = useState(false);
   const openDiscountModal = () => setShowDiscountModal(true);
   const closeDiscountModal = () => setShowDiscountModal(false);
-   const [showCashModal, setShowCashModal] = useState(false);
+  const [showCashModal, setShowCashModal] = useState(false);
   const openCashModal = () => setShowCashModal(true);
   const closeCashModal = () => setShowCashModal(false);
-   const [showScanModal, setShowScanModal] = useState(false);
+  const [showScanModal, setShowScanModal] = useState(false);
   const openScanModal = () => setShowScanModal(true);
   const closeScanModal = () => setShowScanModal(false);
-   const [showSplitbillModal, setShowSplitbillModal] = useState(false);
+  const [showSplitbillModal, setShowSplitbillModal] = useState(false);
   const openSplitbillModal = () => setShowSplitbillModal(true);
   const closeSplitbillModal = () => setShowSplitbillModal(false);
-   const [showPrintOrderModal, setShowPrintOrderModal] = useState(false);
+  const [showPrintOrderModal, setShowPrintOrderModal] = useState(false);
   const openPrintOrderModal = () => setShowPrintOrderModal(true);
   const closePrintOrderModal = () => setShowPrintOrderModal(false);
-   const [showResetModal, setShowResetModal] = useState(false);
+  const [showResetModal, setShowResetModal] = useState(false);
   const openResetModal = () => setShowResetModal(true);
   const closeResetModal = () => setShowResetModal(false);
   const [showTransactionModal, setShowTransactionModal] = useState(false);
   const openTransactionModal = () => setShowTransactionModal(true);
   const closeTransactionModal = () => setShowTransactionModal(false);
-   const [showViewOrdersModal, setShowViewOrdersModal] = useState(false);
+  const [showViewOrdersModal, setShowViewOrdersModal] = useState(false);
   const openViewOrdersModal = () => setShowViewOrdersModal(true);
   const closeViewOrdersModal = () => setShowViewOrdersModal(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -131,12 +171,14 @@ const ProductDetails = () => {
     setShowSuccess(false);
   };
   return (
+   
+    <SearchProvider>
     <div className="position-relative">
       {/* header-start??? */}
       <header style={{ borderBottom: "1px solid #e3dcdc" }}>
         <nav className="d-flex justify-content-between align-items-center px-3 py-3">
           <div style={{ display: "flex", alignItems: "center", gap: "40px" }}>
-            <img style={{ width: "25%" }} src={header_logo} alt="header_logo" />
+            <img style={{ width: "15%" }} src={header_logo} alt="header_logo" />
             <span
               style={{
                 backgroundColor: "#009587",
@@ -402,14 +444,14 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="py-3" >
+          <div className="py-3 px-3 w-100">
             <div className="header-product d-flex justify-content-between align-items-center">
               <div>
                 <strong>Welcome, Wesley Adrian</strong>
                 <p className="m-0">December 24, 2025</p>
               </div>
               <div className="d-flex gap-3">
-                <span
+                {/* <span
                   style={{
                     backgroundColor: "white",
                     border: "1px solid #e3dcdc",
@@ -417,6 +459,7 @@ const ProductDetails = () => {
                     alignItems: "center",
                     gap: "5px",
                     padding: "5px 10px",
+                    borderRadius: "5px",
                   }}
                 >
                   <CiSearch />
@@ -424,8 +467,11 @@ const ProductDetails = () => {
                     style={{ border: "none", outline: "none" }}
                     type="search"
                     placeholder="Search Product"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                </span>
+                </span> */}
+                <SearchBar/>
                 <span className="d-flex gap-2">
                   <button
                     style={{
@@ -469,7 +515,7 @@ const ProductDetails = () => {
             // height:"600px"
           }}
         >
-          <div
+          {/* <div
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -493,7 +539,7 @@ const ProductDetails = () => {
               </span>
               <MdDeleteForever style={{ color: "red", fontSize: "18px" }} />
             </span>
-          </div>
+          </div> */}
           <strong>Customer Information</strong>
           <div className="py-3 d-flex align-items-center justify-content-between">
             <select
@@ -501,8 +547,9 @@ const ProductDetails = () => {
               id=""
               style={{
                 border: "1px solid #e3dcdc",
-                width: "350px",
-                padding: "8px",
+                width: "420px",
+                padding: "5px 10px",
+                borderRadius: "5px",
               }}
             >
               <option value="">Smith</option>
@@ -523,7 +570,7 @@ const ProductDetails = () => {
                 <TbUserPlus />
               </span>
               <span
-               onClick={openBarcodeModal}
+                onClick={openBarcodeModal}
                 style={{
                   backgroundColor: "rgb(0, 122, 255)",
                   padding: "8px 10px",
@@ -536,7 +583,7 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div
+          {/* <div
             style={{
               border: "1px solid rgb(247, 66, 0)",
               backgroundColor: "#ffede8",
@@ -611,17 +658,17 @@ const ProductDetails = () => {
             >
               X
             </span>
-          </div>
-          <hr />
+          </div> */}
+          {/* <hr /> */}
 
           <div className="order-details-table py-3">
             <div className="d-flex justify-content-between align-items-center">
-              <div className="d-flex gap-2 py-3">
+              <div className="d-flex gap-2  pb-3">
                 <span style={{ fontWeight: "500" }}>Order Details</span>
                 <span
                   style={{
-                    backgroundColor: "#ededed",
-                    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                    backgroundColor: "white",
+                    border: "1px solid rgb(227, 220, 220)",
                     padding: "0px 5px",
                     borderRadius: "5px",
                   }}
@@ -662,8 +709,41 @@ const ProductDetails = () => {
                     iPhone 14.64GB
                   </td>
                   <td className="px-3 py-2" style={{ color: "grey" }}>
-                    <button style={{ border: "none" }}>-</button>
-                    <span>1</span> <button style={{ border: "none" }}>+</button>
+                    <span className="d-flex align-items-center gap-2">
+                      <button
+                        onClick={decrement}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        -
+                      </button>
+
+                      {count}
+
+                      <button
+                        onClick={increment}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        +
+                      </button>
+                    </span>
                   </td>
                   <td className="px-3 py-2">$15800</td>
                 </tr>
@@ -676,8 +756,41 @@ const ProductDetails = () => {
                     Red Nike Angelo
                   </td>
                   <td className="px-3 py-2" style={{ color: "grey" }}>
-                    <button style={{ border: "none" }}>-</button>
-                    <span>4</span> <button style={{ border: "none" }}>+</button>
+                    <span className="d-flex align-items-center gap-2">
+                      <button
+                        onClick={decrement2}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        -
+                      </button>
+
+                      {count2}
+
+                      <button
+                        onClick={increment2}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        +
+                      </button>
+                    </span>
                   </td>
                   <td className="px-3 py-2">$398</td>
                 </tr>
@@ -690,8 +803,41 @@ const ProductDetails = () => {
                     Tablet 1.02 inch
                   </td>
                   <td className="px-3 py-2" style={{ color: "grey" }}>
-                    <button style={{ border: "none" }}>-</button>
-                    <span>4</span> <button style={{ border: "none" }}>+</button>
+                    <span className="d-flex align-items-center gap-2">
+                      <button
+                        onClick={decrement3}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        -
+                      </button>
+
+                      {count3}
+
+                      <button
+                        onClick={increment3}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        +
+                      </button>
+                    </span>
                   </td>
                   <td className="px-3 py-2">$3000</td>
                 </tr>
@@ -704,8 +850,41 @@ const ProductDetails = () => {
                     IdealPad Slim 3i
                   </td>
                   <td className="px-3 py-2" style={{ color: "grey" }}>
-                    <button style={{ border: "none" }}>-</button>
-                    <span>4</span> <button style={{ border: "none" }}>+</button>
+                    <span className="d-flex align-items-center gap-2">
+                      <button
+                        onClick={decrement4}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        -
+                      </button>
+
+                      {count4}
+
+                      <button
+                        onClick={increment4}
+                        style={{
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "22px",
+                          height: "22px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: "#dbd8d8",
+                        }}
+                      >
+                        +
+                      </button>
+                    </span>
                   </td>
                   <td className="px-3 py-2">$3000</td>
                 </tr>
@@ -713,7 +892,7 @@ const ProductDetails = () => {
             </table>
           </div>
 
-          <div
+          {/* <div
             style={{
               border: "1px solid #6e36ed",
               backgroundColor: "#f3edfe",
@@ -751,7 +930,7 @@ const ProductDetails = () => {
             <span>
               <RiDeleteBin5Line />
             </span>
-          </div>
+          </div> */}
 
           <div className="payment-summary-container py-3 d-flex flex-column  gap-3">
             <span style={{ fontWeight: "500" }}>Payment Summary</span>
@@ -820,7 +999,7 @@ const ProductDetails = () => {
             </div> */}
             <div className="d-flex justify-content-between align-items-center ">
               <span
-                 onClick={openShippingModal}
+                onClick={openShippingModal}
                 style={{
                   color: "grey",
                   display: "flex",
@@ -834,7 +1013,7 @@ const ProductDetails = () => {
             </div>
             <div className="d-flex justify-content-between align-items-center ">
               <span
-               onClick={openTaxModal}
+                onClick={openTaxModal}
                 style={{
                   color: "grey",
                   display: "flex",
@@ -848,7 +1027,7 @@ const ProductDetails = () => {
             </div>
             <div className="d-flex justify-content-between align-items-center ">
               <span
-              onClick={openCouponModal}
+                onClick={openCouponModal}
                 style={{
                   color: "grey",
                   display: "flex",
@@ -923,56 +1102,86 @@ const ProductDetails = () => {
                   gap: "10px",
                 }}
               >
-                Sub Total 
+                Sub Total
               </span>
               <span>$60.454</span>
             </div>
-            <div className="d-flex justify-content-between align-items-center " style={{borderTop:"1px solid  #e3dcdc", margin:"15px 0", padding:"10px 0"}}>
+            <div
+              className="d-flex justify-content-between align-items-center "
+              style={{
+                borderTop: "1px solid  #e3dcdc",
+                margin: "15px 0",
+                padding: "10px 0",
+              }}
+            >
               <span style={{ fontWeight: "500" }}>Total Payable</span>
               <span style={{ fontWeight: "500" }}>$56590</span>
             </div>
           </div>
-           <div className="select-payment-container">
-                <span style={{ fontWeight: "500" }}>Select Payment</span>
+          <div className="select-payment-container">
+            <span style={{ fontWeight: "500" }}>Select Payment</span>
 
-                <div className="payment-btn py-3 d-flex justify-content-between flex-wrap gap-2">
-                  <button className="payment-btton" onClick={openCashModal}>
-                   <img src={cash_logo} alt="" />  Cash
-                  </button>
-                   <button className="payment-btton">
-                   <img src={card_logo} alt="" />  Card
-                  </button>
-                   <button className="payment-btton">
-                   <img src={points_logo} alt="" />  Points
-                  </button>
-                   <button className="payment-btton">
-                   <img src={deposit_logo} alt="" />  Deposit
-                  </button>
-                    <button className="payment-btton">
-                   <img src={cheque_logo} alt="" />  Cheque
-                  </button>
-                    <button className="payment-btton">
-                   <img src={gift_logo} alt="" />  Gift Card
-                  </button>
-                    <button className="payment-btton" onClick={openScanModal}>
-                   <img src={scan_logo} alt="" />  Scan
-                  </button>
-                    <button className="payment-btton">
-                   <img src={paylater_logo} alt="" />  Pay Later
-                  </button>
-                    <button className="payment-btton">
-                   <img src={external_logo} alt="" />  External
-                  </button>
-                    <button className="payment-btton" onClick={openSplitbillModal}>
-                   <img src={splitbill_logo} alt="" />  Split Bill
-                  </button>
-                </div>
+            <div className="payment-btn py-3 d-flex justify-content-between flex-wrap gap-2">
+              <button className="payment-btton" onClick={openCashModal}>
+                <img src={cash_logo} alt="" /> Cash
+              </button>
+              <button className="payment-btton">
+                <img src={card_logo} alt="" /> Card
+              </button>
+              <button className="payment-btton">
+                <img src={points_logo} alt="" /> Points
+              </button>
+              <button className="payment-btton">
+                <img src={deposit_logo} alt="" /> Deposit
+              </button>
+              <button className="payment-btton">
+                <img src={cheque_logo} alt="" /> Cheque
+              </button>
+              <button className="payment-btton">
+                <img src={gift_logo} alt="" /> Gift Card
+              </button>
+              <button className="payment-btton" onClick={openScanModal}>
+                <img src={scan_logo} alt="" /> Scan
+              </button>
+              <button className="payment-btton">
+                <img src={paylater_logo} alt="" /> Pay Later
+              </button>
+              <button className="payment-btton">
+                <img src={external_logo} alt="" /> External
+              </button>
+              <button className="payment-btton" onClick={openSplitbillModal}>
+                <img src={splitbill_logo} alt="" /> Split Bill
+              </button>
+            </div>
 
-                <div className="d-flex justify-content-between gap-2">
-                  <button className="w-100" style={{border:"none", backgroundColor:"rgb(129, 189, 255)",color:"white", padding:"8px", borderRadius:"5px"}} onClick={openPrintOrderModal}>Print Order</button>
-                  <button className="w-100" style={{border:"none",backgroundColor:"rgb(0, 122, 255)",color:"white", padding:"8px", borderRadius:"5px"}}>Place Order</button>
-                </div>
-           </div>
+            <div className="d-flex justify-content-between gap-2">
+              <button
+                className="w-100"
+                style={{
+                  border: "none",
+                  backgroundColor: "rgb(129, 189, 255)",
+                  color: "white",
+                  padding: "8px",
+                  borderRadius: "5px",
+                }}
+                onClick={openPrintOrderModal}
+              >
+                Print Order
+              </button>
+              <button
+                className="w-100"
+                style={{
+                  border: "none",
+                  backgroundColor: "rgb(0, 122, 255)",
+                  color: "white",
+                  padding: "8px",
+                  borderRadius: "5px",
+                }}
+              >
+                Place Order
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       {/* main-content-end */}
@@ -985,16 +1194,16 @@ const ProductDetails = () => {
           padding: "10px",
           display: "flex",
           justifyContent: "center",
-          position:"fixed",
-          zIndex:"1",
-          width:"100%",
-          bottom:"0",
-          backgroundColor:"white"
+          position: "fixed",
+          zIndex: "1",
+          width: "100%",
+          bottom: "0",
+          backgroundColor: "white",
         }}
       >
         <div className="d-flex gap-2">
           <button
-             onClick={openPrintOrderModal}
+            onClick={openPrintOrderModal}
             style={{
               border: "none",
               backgroundColor: "#f74200",
@@ -1041,7 +1250,7 @@ const ProductDetails = () => {
             View Orders
           </button>
           <button
-          onClick={openResetModal}
+            onClick={openResetModal}
             style={{
               border: "none",
               backgroundColor: "#2b39cc",
@@ -1053,7 +1262,7 @@ const ProductDetails = () => {
             Reset
           </button>
           <button
-           onClick={openTransactionModal}
+            onClick={openTransactionModal}
             style={{
               border: "none",
               backgroundColor: "#ff0000",
@@ -1068,23 +1277,25 @@ const ProductDetails = () => {
       </div>
       {/* footer-content-end? */}
       {showModal && <CreateCustomerModal onClose={closeModal} />}
-       {showBarcodeModal &&<BarcodeModal  onClose={closeBarcodeModal} />}
+      {showBarcodeModal && <BarcodeModal onClose={closeBarcodeModal} />}
       {showSuccess && (
-        <PaymentSuccessModal onPrint={handlePrint} onNext={handleNext}/>
+        <PaymentSuccessModal onPrint={handlePrint} onNext={handleNext} />
       )}
-      {showShippingModal && <ShippingModal onClose={closeShippingModal}/>}
-      {showTaxModal && <TaxModal onClose={closeTaxModal}/>}
-      {showCouponModal &&<CouponModal onClose={closeCouponModal}/>}
-      {showDiscountModal && <DiscountModal onClose={closeDiscountModal}/>}
-      {showCashModal &&<CashModal onClose={closeCashModal}/>}
-      {showScanModal && <Scan onClose={closeScanModal}/>}
-      {showSplitbillModal &&<SplitBillModal  onClose={closeSplitbillModal}/>}
-      {showPrintOrderModal &&<PrintOrder  onClose={closePrintOrderModal}/> }
-      {showResetModal &&<ResetModal onClose={closeResetModal}/>}
-      {showTransactionModal &&<TransactionModel onClose={closeTransactionModal}/>}
-      {showViewOrdersModal &&<ViewOrders onClose={closeViewOrdersModal}/>}
-     
+      {showShippingModal && <ShippingModal onClose={closeShippingModal} />}
+      {showTaxModal && <TaxModal onClose={closeTaxModal} />}
+      {showCouponModal && <CouponModal onClose={closeCouponModal} />}
+      {showDiscountModal && <DiscountModal onClose={closeDiscountModal} />}
+      {showCashModal && <CashModal onClose={closeCashModal} />}
+      {showScanModal && <Scan onClose={closeScanModal} />}
+      {showSplitbillModal && <SplitBillModal onClose={closeSplitbillModal} />}
+      {showPrintOrderModal && <PrintOrder onClose={closePrintOrderModal} />}
+      {showResetModal && <ResetModal onClose={closeResetModal} />}
+      {showTransactionModal && (
+        <TransactionModel onClose={closeTransactionModal} />
+      )}
+      {showViewOrdersModal && <ViewOrders onClose={closeViewOrdersModal} />}
     </div>
+    </SearchProvider>
   );
 };
 

@@ -15,7 +15,7 @@
 .sidebar-content {
     overflow-y: auto;
     width: calc(100% - 550px);
-    height: calc(100vh - 160px);
+    height: calc(100vh - 150px);
 
 }
 .sidebar-content::-webkit-scrollbar{
@@ -23,7 +23,7 @@
 }
 .customer-info-container{
     overflow-y: auto;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 150px);
     
 }
 .customer-info-container::-webkit-scrollbar{

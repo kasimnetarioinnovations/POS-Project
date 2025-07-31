@@ -9,9 +9,11 @@ import product6 from "../assets/Image/product6.png";
 import product7 from "../assets/Image/product7.png";
 // import product8 from "../assets/Image/product8.png";
 import "./ProductCard.css";
+import { useSearch } from "../SearchContext"; // 👈 import context
 
 
 const ProductCard = () => {
+  const { searchTerm } = useSearch(); // 👈 get search value
    const fakeProducts = [
   {
     id: 1,
@@ -23,14 +25,14 @@ const ProductCard = () => {
   {
     id: 2,
     name: "Samsung Galaxy S21",
-    category: "Mobiles",
+    category: "Headphone",
     price: 12900,
     image: product2
   },
   {
     id: 3,
     name: "OnePlus 9",
-    category: "Mobiles",
+    category: "Shoes",
     price: 13999,
     image: product3
   },
@@ -44,7 +46,7 @@ const ProductCard = () => {
   {
     id: 5,
     name: "Redmi Note 12",
-    category: "Mobiles",
+    category: "Watch",
     price: 8999,
     image: product5
   },
@@ -79,7 +81,7 @@ const ProductCard = () => {
    {
     id: 6,
     name: "Realme Narzo 50",
-    category: "Mobiles",
+    category: "Laptop",
     price: 9999,
     image: product6
   },
@@ -93,20 +95,29 @@ const ProductCard = () => {
 {
     id: 7,
     name: "Google Pixel 6a",
-    category: "Mobiles",
+    category: "Earbuds",
     price: 19900,
     image: product7
   },
 ];
+  // 🔍 Filter products by exact full name (case-insensitive)
+  const filteredProducts = fakeProducts.filter((product) =>
+    searchTerm.trim() === ''
+      ? true
+      : product.name.toLowerCase() === searchTerm.trim().toLowerCase()
+  );
+
 
 
   return (
-    <div>
-        <div className="productcard-container py-3" style={{ display:"grid", gridTemplateColumns:"repeat(5, 0fr)", gap:"10px" , flexWrap:"wrap"}}>
-         {fakeProducts.map((item) =>(
-            <Card key={item.id} product={item}/>
-         ))}
+   <div className="productcard-container py-3" style={{ display: "grid", gridTemplateColumns: "repeat(5, 0fr)", gap: "12px", flexWrap: "wrap" }}>
+      {filteredProducts.length > 0 ? (
+        filteredProducts.map((item) => <Card key={item.id} product={item} />)
+      ) : (
+        <div style={{ gridColumn: "1 / -1", textAlign: "center", padding: "20px", color: "gray" }}>
+          No Products Found
         </div>
+      )}
     </div>
   )
 }

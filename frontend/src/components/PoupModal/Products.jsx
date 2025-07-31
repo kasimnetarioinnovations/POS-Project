@@ -4,6 +4,7 @@ import product3 from '../../assets/Image/product3.png';
 import product1 from '../../assets/Image/product1.png';
 
 const Products = ({ onClose }) => {
+  
   return (
     <div>
       <div className="products-overlay">

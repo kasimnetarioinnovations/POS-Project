@@ -1,5 +1,6 @@
 import React from 'react';
 import './PaymentReceiptModal.css';
+import munc from '../../assets/Image/munc.png'
 
 const PaymentReceiptModal = () => {
   const handlePrint = () => {
@@ -10,7 +11,7 @@ const PaymentReceiptModal = () => {
     <div id="print-receipt" className="receipt-container" style={{height:"100vh" ,overflowY:"scroll"}}>
       <div className="text-center">
         <img
-          src="https://dreamguys.co.in/pos/template/img/logo.png"
+          src={munc}
           alt="logo"
           className="invoice-logo"
         />
