@@ -8,7 +8,7 @@ const PaymentReceiptModal = () => {
   };
 
   return (
-    <div id="print-receipt" className="receipt-container" style={{height:"100vh" ,overflowY:"scroll"}}>
+    <div id="print-receipt" className="receipt-container" style={{height:"100vh",overflowY:"scroll"}}>
       <div className="text-center">
         <img
           src={munc}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductDetails.css";
 import header_logo from "../assets/Image/munc.png";
 import { CiClock2 } from "react-icons/ci";
@@ -157,6 +157,7 @@ const ProductDetails = () => {
   const openViewOrdersModal = () => setShowViewOrdersModal(true);
   const closeViewOrdersModal = () => setShowViewOrdersModal(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [time, setTime] = useState(getCurrentTime());
   const handlePaymentClick = () => {
     // simulate payment process here
     setShowSuccess(true);
@@ -170,6 +171,21 @@ const ProductDetails = () => {
     console.log("Proceed to next order...");
     setShowSuccess(false);
   };
+
+  
+  function getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleTimeString('en-US', { hour12: true }); // User's timezone
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(getCurrentTime());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
    
     <SearchProvider>
@@ -195,12 +211,12 @@ const ProductDetails = () => {
               }}
             >
               <CiClock2 />
-              <p className="m-0">09:25:32</p>
+              <p className="m-0">{time}</p>
             </span>
           </div>
 
           <div className="d-flex align-items-center gap-3">
-            <span
+            {/* <span
               style={{
                 backgroundColor: "#6e36ed",
                 color: "white",
@@ -217,9 +233,9 @@ const ProductDetails = () => {
             >
               <RiGlobalLine />
               <p className="m-0">Dashboard</p>
-            </span>
+            </span> */}
 
-            <span
+            {/* <span
               style={{
                 border: "1px solid #e3dcdc",
                 color: "white",
@@ -247,7 +263,7 @@ const ProductDetails = () => {
                 <option value="">Freshmart</option>
                 <option value="">Vmart</option>
               </select>
-            </span>
+            </span> */}
 
             <span
               style={{
